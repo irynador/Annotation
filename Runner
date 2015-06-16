@@ -1,0 +1,20 @@
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+
+
+
+public class Runner {
+    public static void main(String[] args) {
+
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        Class classObj =  context.getBean("class1", Class.class);
+
+        Printer printerObj = context.getBean("printer1", Printer.class);
+        printerObj.printf();
+
+        Class classProxyObj = (Class)context.getBean("proxy1");
+        int iA = classProxyObj.getA();
+        System.out.println("resClass = " + iA);
+    }
+}
